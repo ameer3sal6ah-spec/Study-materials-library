@@ -23,12 +23,12 @@ const FileViewerModal: React.FC<FileViewerModalProps> = ({ file, onClose }) => {
 
     // Fallback for non-viewable files or if URL is somehow missing
     return (
-      <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 p-8 text-center rounded-b-lg">
-        <p className="text-xl font-semibold text-gray-700 mb-4">
+      <div className="w-full h-full flex flex-col items-center justify-center bg-gray-100 dark:bg-slate-700 p-8 text-center rounded-b-lg">
+        <p className="text-xl font-semibold text-gray-700 dark:text-slate-200 mb-4">
           لا يمكن عرض هذا النوع من الملفات مباشرة.
         </p>
-        <p className="text-gray-500 mb-6">
-          نوع الملف: <span className="font-mono bg-gray-200 px-2 py-1 rounded">{file.type || 'غير معروف'}</span>
+        <p className="text-gray-500 dark:text-slate-400 mb-6">
+          نوع الملف: <span className="font-mono bg-gray-200 dark:bg-slate-600 px-2 py-1 rounded">{file.type || 'غير معروف'}</span>
         </p>
         <a 
           href={file.publicUrl} 
@@ -49,20 +49,20 @@ const FileViewerModal: React.FC<FileViewerModalProps> = ({ file, onClose }) => {
       role="dialog"
     >
       <div 
-        className="bg-white rounded-lg shadow-2xl w-full max-w-4xl h-full max-h-[90vh] flex flex-col"
+        className="bg-white dark:bg-slate-800 rounded-lg shadow-2xl w-full max-w-4xl h-full max-h-[90vh] flex flex-col"
         onClick={(e) => e.stopPropagation()}
       >
-        <header className="flex items-center justify-between p-4 border-b">
-          <h3 className="font-semibold text-lg text-gray-800 truncate" title={file.name}>{file.name}</h3>
+        <header className="flex items-center justify-between p-4 border-b dark:border-slate-700">
+          <h3 className="font-semibold text-lg text-gray-800 dark:text-slate-100 truncate" title={file.name}>{file.name}</h3>
           <button 
             onClick={onClose} 
-            className="p-2 rounded-full text-gray-500 hover:bg-gray-200 hover:text-gray-800 transition-colors"
+            className="p-2 rounded-full text-gray-500 hover:bg-gray-200 hover:text-gray-800 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-100 transition-colors"
             aria-label="إغلاق"
           >
             <CloseIcon className="w-6 h-6" />
           </button>
         </header>
-        <div className="flex-1 p-2 overflow-auto bg-gray-200">
+        <div className="flex-1 p-2 overflow-auto bg-gray-200 dark:bg-slate-900">
           {renderContent()}
         </div>
       </div>

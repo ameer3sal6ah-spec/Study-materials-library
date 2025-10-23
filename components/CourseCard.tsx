@@ -25,20 +25,20 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
   return (
     <div
       onClick={onSelect}
-      className="bg-white rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
+      className="bg-white dark:bg-slate-800 rounded-lg shadow-lg overflow-hidden transform hover:-translate-y-1 hover:shadow-xl transition-all duration-300 cursor-pointer flex flex-col"
     >
       <div className="p-6 flex-grow relative">
         {isCourseComplete && (
-            <div className="absolute top-3 left-3 flex items-center bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+            <div className="absolute top-3 left-3 flex items-center bg-green-100 dark:bg-green-900/50 text-green-800 dark:text-green-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">
                 <CheckCircleIcon className="w-4 h-4 mr-1" />
                 مكتمل
             </div>
         )}
-        <h3 className="text-xl font-bold text-gray-800 mb-1">{course.nameAr}</h3>
-        <p className="text-sm text-gray-500 mb-4">{course.nameEn}</p>
+        <h3 className="text-xl font-bold text-gray-800 dark:text-slate-100 mb-1">{course.nameAr}</h3>
+        <p className="text-sm text-gray-500 dark:text-slate-400 mb-4">{course.nameEn}</p>
         
         <div className="space-y-2 text-sm">
-            <div className="flex items-center justify-between text-blue-600">
+            <div className="flex items-center justify-between text-blue-600 dark:text-blue-400">
                 <div className="flex items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
@@ -46,7 +46,7 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
                     <span className="font-semibold">{course.doctor}</span>
                 </div>
                 {course.lectureDay && (
-                    <div className="flex items-center text-gray-500">
+                    <div className="flex items-center text-gray-500 dark:text-slate-400">
                         <CalendarIcon className="w-4 h-4 ml-1" />
                         <span>{course.lectureDay}</span>
                     </div>
@@ -54,13 +54,13 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
             </div>
 
             {course.taName && (
-                <div className="flex items-center justify-between text-teal-600">
+                <div className="flex items-center justify-between text-teal-600 dark:text-teal-400">
                     <div className="flex items-center">
                         <UserGroupIcon className="w-5 h-5 ml-2" />
                         <span className="font-semibold">{course.taName}</span>
                     </div>
                      {course.sectionDay && (
-                        <div className="flex items-center text-gray-500">
+                        <div className="flex items-center text-gray-500 dark:text-slate-400">
                             <CalendarIcon className="w-4 h-4 ml-1" />
                             <span>{course.sectionDay}</span>
                         </div>
@@ -69,18 +69,18 @@ const CourseCard: React.FC<CourseCardProps> = ({ course, onSelect }) => {
             )}
         </div>
       </div>
-      <div className="border-t border-gray-200 px-6 py-4 bg-gray-50 space-y-2 text-sm text-gray-600">
+      <div className="border-t border-gray-200 dark:border-slate-700 px-6 py-4 bg-gray-50 dark:bg-slate-800/50 space-y-2 text-sm text-gray-600 dark:text-slate-300">
           <div className="flex justify-between">
               <span>المحاضرات المرفوعة:</span>
-              <span className="font-bold text-gray-800">{totalLectures} / {uploadedLectures}</span>
+              <span className="font-bold text-gray-800 dark:text-slate-100">{totalLectures} / {uploadedLectures}</span>
           </div>
           <div className="flex justify-between">
               <span>السكاشن المرفوعة:</span>
-              <span className="font-bold text-gray-800">{totalSections} / {uploadedSections}</span>
+              <span className="font-bold text-gray-800 dark:text-slate-100">{totalSections} / {uploadedSections}</span>
           </div>
             <div className="flex justify-between">
               <span>التقدم:</span>
-              <span className="font-bold text-blue-600">{totalItems} / {completedItems}</span>
+              <span className="font-bold text-blue-600 dark:text-blue-400">{totalItems} / {completedItems}</span>
           </div>
       </div>
       <div className="bg-blue-500 text-white text-center px-6 py-3 font-semibold hover:bg-blue-600 transition-colors">

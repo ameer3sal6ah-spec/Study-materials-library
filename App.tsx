@@ -324,7 +324,7 @@ const App: React.FC = () => {
     if (isPageLoading) {
       return (
         <div className="flex justify-center items-center h-64">
-          <svg className="animate-spin h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <svg className="animate-spin h-10 w-10 text-blue-500 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
@@ -343,16 +343,15 @@ const App: React.FC = () => {
         />
       );
     }
-    // Main page content... (No changes needed here from previous version)
     return (
       <div>
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-2 border-b-2 border-blue-500">
-          <h2 className="text-3xl font-bold text-gray-700 mb-4 sm:mb-0">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-2 border-b-2 border-blue-500 dark:border-blue-400">
+          <h2 className="text-3xl font-bold text-gray-700 dark:text-slate-200 mb-4 sm:mb-0">
             المواد الدراسية
           </h2>
           <div className="flex items-center gap-2">
             <div className="relative group">
-                <InfoIcon className="w-6 h-6 text-gray-500 cursor-pointer" />
+                <InfoIcon className="w-6 h-6 text-gray-500 dark:text-slate-400 cursor-pointer" />
                 <div className="absolute bottom-full right-0 mb-2 w-72 bg-gray-800 text-white text-xs rounded-lg p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
                     <p className='font-bold mb-1'>استيراد الجدول الدراسي بملف PDF:</p>
                     <p>ارفع جدولك الدراسي بصيغة PDF وسيقوم الذكاء الاصطناعي بتحليله تلقائيًا لإنشاء قائمة المواد الخاصة بك.</p>
@@ -361,7 +360,7 @@ const App: React.FC = () => {
             </div>
             <label className={`flex items-center gap-2 font-bold py-2 px-4 rounded-lg transition duration-300 cursor-pointer ${
                 isAnalyzing 
-                ? 'bg-gray-400 text-gray-800 cursor-not-allowed' 
+                ? 'bg-gray-400 dark:bg-slate-600 text-gray-800 dark:text-gray-300 cursor-not-allowed' 
                 : 'bg-green-500 hover:bg-green-600 text-white'
             }`}>
                 {isAnalyzing ? (
@@ -380,7 +379,7 @@ const App: React.FC = () => {
                 )}
                 <input type="file" accept=".pdf" className="hidden" onChange={handleScheduleUpload} disabled={isAnalyzing} />
             </label>
-             <button onClick={handleResetSchedule} disabled={isAnalyzing} className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed">
+             <button onClick={handleResetSchedule} disabled={isAnalyzing} className="flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300 disabled:bg-gray-400 dark:disabled:bg-slate-600 disabled:cursor-not-allowed">
                 <ResetIcon className="w-5 h-5"/>
                 <span>إعادة تعيين</span>
             </button>
@@ -397,9 +396,9 @@ const App: React.FC = () => {
             ))}
           </div>
         ) : (
-          <div className="text-center py-16 px-6 bg-white rounded-lg shadow-md">
-            <h3 className="text-2xl font-semibold text-gray-700">لا توجد مواد دراسية</h3>
-            <p className="text-gray-500 mt-2">
+          <div className="text-center py-16 px-6 bg-white dark:bg-slate-800 rounded-lg shadow-md">
+            <h3 className="text-2xl font-semibold text-gray-700 dark:text-slate-200">لا توجد مواد دراسية</h3>
+            <p className="text-gray-500 dark:text-slate-400 mt-2">
               يبدو أن قائمتك فارغة. يمكنك البدء عبر استيراد جدولك الدراسي بصيغة PDF أو إعادة التعيين للوضع الافتراضي.
             </p>
           </div>
@@ -409,12 +408,12 @@ const App: React.FC = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gray-50 text-gray-800">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-gray-800 dark:text-slate-200">
       <Header />
       <main className="container mx-auto p-4 md:p-8">
         {renderContent()}
       </main>
-      <footer className="text-center p-4 mt-8 text-gray-500">
+      <footer className="text-center p-4 mt-8 text-gray-500 dark:text-slate-400">
         <p>&copy; 2024 مكتبة المواد الدراسية. جميع الحقوق محفوظة.</p>
       </footer>
       {viewingFile && <FileViewerModal file={viewingFile} onClose={handleCloseViewer} />}

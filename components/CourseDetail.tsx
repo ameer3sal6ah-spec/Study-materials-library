@@ -27,25 +27,25 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ course, onBack, onFileUploa
   
   const renderItems = (items: (Lecture | Section)[], type: 'lecture' | 'section') => {
     return items.map(item => (
-      <li key={item.id} className="flex items-center justify-between bg-white p-3 rounded-md shadow-sm mb-3">
+      <li key={item.id} className="flex items-center justify-between bg-white dark:bg-slate-700 p-3 rounded-md shadow-sm mb-3">
         <button 
           onClick={() => onToggleComplete(course.id, type, item.id)} 
-          className="p-2 -ml-2 text-gray-400 hover:text-green-500 transition-colors"
+          className="p-2 -ml-2 text-gray-400 dark:text-slate-500 hover:text-green-500 dark:hover:text-green-400 transition-colors"
           aria-label={item.completed ? 'وضع علامة غير مكتمل' : 'وضع علامة مكتمل'}
         >
-          {item.completed ? <CheckIcon className="w-6 h-6 text-green-500" /> : <EmptyCheckIcon className="w-6 h-6" />}
+          {item.completed ? <CheckIcon className="w-6 h-6 text-green-500 dark:text-green-400" /> : <EmptyCheckIcon className="w-6 h-6" />}
         </button>
         <div className="flex-1 min-w-0 mx-2">
-          <p className="font-semibold text-gray-700 truncate">{item.name}</p>
+          <p className="font-semibold text-gray-700 dark:text-slate-200 truncate">{item.name}</p>
           {item.file ? (
-            <button onClick={() => onViewFile(item.file!)} className="flex items-center text-sm text-blue-600 hover:underline mt-1 text-right w-full"
+            <button onClick={() => onViewFile(item.file!)} className="flex items-center text-sm text-blue-600 dark:text-blue-400 hover:underline mt-1 text-right w-full"
               title={item.file.name}
             >
               <FileIcon className="w-4 h-4 ml-1 flex-shrink-0" />
               <span className="truncate">{item.file.name}</span>
             </button>
           ) : (
-            <p className="text-sm text-gray-400 mt-1">لم يتم رفع ملف</p>
+            <p className="text-sm text-gray-400 dark:text-slate-500 mt-1">لم يتم رفع ملف</p>
           )}
         </div>
         <label className="ml-2 cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-3 rounded-md transition duration-300 flex items-center">
@@ -61,15 +61,15 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ course, onBack, onFileUploa
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-xl">
-      <div className="flex items-center justify-between mb-6 pb-4 border-b">
+    <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-xl">
+      <div className="flex items-center justify-between mb-6 pb-4 border-b dark:border-slate-700">
         <div>
-          <h2 className="text-3xl font-bold text-gray-800">{course.nameAr}</h2>
-          <p className="text-gray-500">{course.doctor}</p>
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-slate-100">{course.nameAr}</h2>
+          <p className="text-gray-500 dark:text-slate-400">{course.doctor}</p>
         </div>
         <button
           onClick={onBack}
-          className="flex items-center bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-4 rounded-lg transition duration-300"
+          className="flex items-center bg-gray-200 hover:bg-gray-300 text-gray-700 dark:bg-slate-700 dark:hover:bg-slate-600 dark:text-slate-200 font-bold py-2 px-4 rounded-lg transition duration-300"
         >
           <BackIcon className="w-5 h-5 mr-2"/>
           <span>رجوع</span>
@@ -78,15 +78,15 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ course, onBack, onFileUploa
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
-          <h3 className="text-2xl font-semibold text-gray-700 mb-4">المحاضرات</h3>
-          <div className="bg-gray-50 p-4 rounded-lg flex flex-col h-[32rem]">
+          <h3 className="text-2xl font-semibold text-gray-700 dark:text-slate-200 mb-4">المحاضرات</h3>
+          <div className="bg-gray-50 dark:bg-slate-900/70 p-4 rounded-lg flex flex-col h-[32rem]">
             <ul className="space-y-2 flex-grow overflow-y-auto pr-2">
               {renderItems(course.lectures, 'lecture')}
             </ul>
-            <div className="mt-4 flex justify-center border-t pt-4">
+            <div className="mt-4 flex justify-center border-t dark:border-slate-700 pt-4">
                 <button 
                     onClick={() => onAddItem(course.id, 'lecture')}
-                    className="flex items-center justify-center w-full bg-green-100 hover:bg-green-200 text-green-800 font-bold py-2 px-4 rounded-lg transition duration-300"
+                    className="flex items-center justify-center w-full bg-green-100 hover:bg-green-200 text-green-800 dark:bg-green-900/50 dark:hover:bg-green-900/80 dark:text-green-300 font-bold py-2 px-4 rounded-lg transition duration-300"
                 >
                     <AddIcon className="w-5 h-5 mr-2" />
                     إضافة محاضرة جديدة
@@ -96,19 +96,19 @@ const CourseDetail: React.FC<CourseDetailProps> = ({ course, onBack, onFileUploa
         </div>
         <div>
           <div className="flex items-baseline gap-2 mb-4">
-             <h3 className="text-2xl font-semibold text-gray-700">السكاشن والفصول</h3>
+             <h3 className="text-2xl font-semibold text-gray-700 dark:text-slate-200">السكاشن والفصول</h3>
              {course.taName && (
-                <span className="text-md font-medium text-gray-500">({course.taName})</span>
+                <span className="text-md font-medium text-gray-500 dark:text-slate-400">({course.taName})</span>
              )}
           </div>
-          <div className="bg-gray-50 p-4 rounded-lg flex flex-col h-[32rem]">
+          <div className="bg-gray-50 dark:bg-slate-900/70 p-4 rounded-lg flex flex-col h-[32rem]">
             <ul className="space-y-2 flex-grow overflow-y-auto pr-2">
               {renderItems(course.sections, 'section')}
             </ul>
-            <div className="mt-4 flex justify-center border-t pt-4">
+            <div className="mt-4 flex justify-center border-t dark:border-slate-700 pt-4">
                 <button 
                     onClick={() => onAddItem(course.id, 'section')}
-                    className="flex items-center justify-center w-full bg-green-100 hover:bg-green-200 text-green-800 font-bold py-2 px-4 rounded-lg transition duration-300"
+                    className="flex items-center justify-center w-full bg-green-100 hover:bg-green-200 text-green-800 dark:bg-green-900/50 dark:hover:bg-green-900/80 dark:text-green-300 font-bold py-2 px-4 rounded-lg transition duration-300"
                 >
                     <AddIcon className="w-5 h-5 mr-2" />
                     إضافة سكشن جديد
